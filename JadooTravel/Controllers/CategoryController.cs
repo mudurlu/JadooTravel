@@ -17,7 +17,7 @@ namespace JadooTravel.Controllers
         public async Task<IActionResult> CategoryList()
         {
             var values = await _categoryService.GetAllCategoryAsync();
-            return View();
+            return View(values);
         }
 
         [HttpGet]
@@ -38,6 +38,12 @@ namespace JadooTravel.Controllers
             return RedirectToAction("CategoryList");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(string id)
+        {
+            var values = await _categoryService.GetCategoryByIdAsync(id);
+            return View(values);
+        }
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
             await _categoryService.UpdateCategoryAsync(updateCategoryDto);

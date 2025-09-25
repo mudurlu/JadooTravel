@@ -1,0 +1,29 @@
+﻿@model List<ResultCategoryDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>İşlemler</th>
+    </tr>
+        @foreach(var i in Model)
+        {
+            <tr>
+                <td>@i.CategoryId</td>
+                <td>@i.CategoryName</td>
+                <td>
+                    <a class="btn btn-danger" href="/Category/DeleteCategory/@i.CategoryId">Sil</a>
+                    <a class="btn btn-info" href="/Category/UpdateCategory/@i.CategoryId">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Category/CreateCategory/" class="btn btn-success">Yeni Kategori Girişi</a>
+</div>

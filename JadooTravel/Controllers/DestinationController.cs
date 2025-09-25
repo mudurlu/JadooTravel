@@ -38,6 +38,14 @@ namespace JadooTravel.Controllers
             return RedirectToAction("DestinationList");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateDestination(string id)
+        {
+            var values = await _destinationService.GetDestinationByIdAsync(id);
+            return View(values);
+        }
+
+
         public async Task<IActionResult> UpdateDestination(UpdateDestinationDto updateDestinationDto)
         {
             await _destinationService.UpdateDestinationAsync(updateDestinationDto);

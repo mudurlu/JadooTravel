@@ -1,0 +1,33 @@
+﻿@model List<ResultDestinationDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Tur Şehri / Ülke</th>
+            <th>Tur Fiyatı</th>
+            <th>Tur Kapasitesi</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.DestinationId</td>
+                <td>@i.CityCountry</td>
+                <td>@i.Price</td>
+                <td>@i.Capacity</td>
+                <td>
+                    <a class="btn btn-danger" href="/Destination/DeleteDestination/@i.DestinationId">Sil</a>
+                    <a class="btn btn-info" href="/Destination/UpdateDestination/@i.DestinationId">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Destination/CreateDestination/" class="btn btn-success">Yeni Tur Girişi</a>
+</div>
